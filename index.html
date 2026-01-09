@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lit Palm Candle | Premium Palm Wax Candle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',sans-serif;background:#f7f7f7;color:#333}
+    header{background:#1b5e20;color:#fff;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:42px;height:42px}
+    nav a{color:#fff;margin:0 14px;text-decoration:none;font-weight:500}
+    nav a:hover{text-decoration:underline}
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:80px 8%;background:linear-gradient(135deg,#e8f5e9,#ffffff)}
+    .hero img{width:100%;border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,.2)}
+    .btn{background:#1b5e20;color:#fff;padding:14px 26px;border-radius:10px;text-decoration:none;display:inline-block;margin-top:20px;font-weight:600}
+    section{padding:80px 8%}
+    h2{text-align:center;margin-bottom:50px;font-size:32px}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:35px}
+    .card{background:#fff;border-radius:22px;box-shadow:0 15px 30px rgba(0,0,0,.12);padding:22px;text-align:center}
+    .card img{width:100%;height:220px;object-fit:cover;border-radius:16px}
+    .card h3{margin:15px 0 8px}
+    .price{font-weight:600;color:#1b5e20}
+    .card button{margin-top:14px;border:none;background:#1b5e20;color:#fff;padding:12px 18px;border-radius:8px;cursor:pointer;font-weight:500}
+    .card button:hover{background:#2e7d32}
+    #cart{background:#fff;border-radius:20px;box-shadow:0 15px 30px rgba(0,0,0,.15);padding:30px;max-width:420px;margin:40px auto}
+    #cart h3{text-align:center;margin-bottom:20px}
+    footer{background:#1b5e20;color:#fff;text-align:center;padding:25px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Logo Lit Palm">
+    <h3>Lit Palm</h3>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div>
+    <h1>Lilin Sawit Premium</h1>
+    <p>Lilin berbahan <b>palm wax alami</b>, lebih bersih, tahan lama, dan ramah lingkungan. Cocok untuk dekorasi & relaksasi.</p>
+    <a href="#produk" class="btn">Belanja Sekarang</a>
+  </div>
+  <img src=src="https://img.freepik.com/vektor-premium/logo-minyak-kelapa-sawit_617585-1617.jpg">
+</section>
+
+<section id="produk">
+  <h2>Produk Unggulan</h2>
+  <div class="products">
+    <div class="card">
+      <img src="https://cnc-magazine.oramiland.com/parenting/images/_cara-membuat-lilin-aromaterapi.width-800.format-webp.webp">
+      <h3>Palm Candle Natural</h3>
+      <p class="price">Rp25.000</p>
+      <button onclick="addCart('Palm Candle Natural',25000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt8PuM5DN8l7Ehp4GLJhIzaoKm7U1t6s5Y-A&s">
+      <h3>Palm Candle Aromaterapi</h3>
+      <p class="price">Rp35.000</p>
+      <button onclick="addCart('Palm Candle Aromaterapi',35000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCr1ness7yV8Hi28cPwlUylW62m9u3DKHCPw&s">
+      <h3>Palm Candle Premium</h3>
+      <p class="price">Rp50.000</p>
+      <button onclick="addCart('Palm Candle Premium',50000)">Tambah ke Keranjang</button>
+    </div>
+  </div>
+</section>
+
+<div id="cart">
+  <h3>🛒 Keranjang Belanja</h3>
+  <ul id="cartItems"></ul>
+  <p><b>Total: Rp<span id="total">0</span></b></p>
+  <button class="btn" onclick="checkoutWA()">Checkout WhatsApp</button>
+</div>
+
+<section id="tentang">
+  <h2>Tentang Lit Palm</h2>
+  <p style="max-width:850px;margin:auto;text-align:center">Lit Palm Candle menghadirkan lilin sawit premium berbahan palm wax alami yang ramah lingkungan, minim asap, dan elegan untuk berbagai kebutuhan.</p>
+</section>
+
+<section id="kontak">
+  <h2>Kontak Kami</h2>
+  <p style="text-align:center">WhatsApp: <b>+62 812-3456-7890</b><br>Email: <b>litpalmcandle@gmail.com</b></p>
+</section>
+
+<footer>
+  <p>© 2026 Lit Palm Candle • Premium Palm Wax Candle</p>
+</footer>
+
+<script>
+  let cart=[];
+  function addCart(nama,harga){cart.push({nama,harga});renderCart();}
+  function renderCart(){
+    let list=document.getElementById('cartItems');
+    let total=0;list.innerHTML='';
+    cart.forEach(i=>{total+=i.harga;list.innerHTML+=`<li>${i.nama} - Rp${i.harga}</li>`});
+    document.getElementById('total').innerText=total;
+  }
+  function checkoutWA(){
+    let pesan='Halo, saya ingin memesan:%0A';
+    cart.forEach(i=>{pesan+=`- ${i.nama} (Rp${i.harga})%0A`});
+    pesan+=`Total: Rp${document.getElementById('total').innerText}`;
+    window.open('https://wa.me/6281234567890?text='+pesan,'_blank');
+  }
+</script>
+
+</body>
+</html>
